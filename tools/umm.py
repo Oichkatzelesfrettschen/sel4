@@ -117,7 +117,7 @@ def print_graph(filename, out_file):
     mp = build_types(filename)
 
     print('digraph types {', file=out_file)
-    for k, flds in mp.iteritems():
+    for k, flds in mp.items():
         for fld, tp in flds:
             # if is_base(tp):
             print('\t "%s" -> "%s" [label="%s"]' % (k, base_name(tp), fld),

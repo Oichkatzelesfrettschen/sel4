@@ -53,6 +53,7 @@ macro(declare_seL4_arch)
         "riscv32;KernelSel4ArchRiscV32;ARCH_RISCV32"
         "riscv64;KernelSel4ArchRiscV64;ARCH_RISCV64"
         "x86_64;KernelSel4ArchX86_64;ARCH_X86_64"
+        "x86_64_v1;KernelSel4ArchX86_64_v1;ARCH_X86_64_V1"
         "ia32;KernelSel4ArchIA32;ARCH_IA32"
     )
 
@@ -69,7 +70,7 @@ macro(declare_seL4_arch)
         "Architecture to use when building the kernel"
         "arm;KernelArchARM;ARCH_ARM;KernelSel4ArchAarch32 OR KernelSel4ArchAarch64"
         "riscv;KernelArchRiscV;ARCH_RISCV;KernelSel4ArchRiscV32 OR KernelSel4ArchRiscV64"
-        "x86;KernelArchX86;ARCH_X86;KernelSel4ArchX86_64 OR KernelSel4ArchIA32"
+        "x86;KernelArchX86;ARCH_X86;KernelSel4ArchX86_64 OR KernelSel4ArchX86_64_v1 OR KernelSel4ArchIA32"
     )
 
     # Set kernel mode options
@@ -77,7 +78,7 @@ macro(declare_seL4_arch)
         config_set(KernelWordSize WORD_SIZE 32)
         set(Kernel64 OFF CACHE INTERNAL "")
         set(Kernel32 ON CACHE INTERNAL "")
-    elseif(KernelSel4ArchAarch64 OR KernelSel4ArchRiscV64 OR KernelSel4ArchX86_64)
+    elseif(KernelSel4ArchAarch64 OR KernelSel4ArchRiscV64 OR KernelSel4ArchX86_64 OR KernelSel4ArchX86_64_v1)
         config_set(KernelWordSize WORD_SIZE 64)
         set(Kernel64 ON CACHE INTERNAL "")
         set(Kernel32 OFF CACHE INTERNAL "")

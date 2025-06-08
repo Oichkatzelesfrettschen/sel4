@@ -16,6 +16,8 @@ from hardware.outputs import c_header, compat_strings, yaml as yaml_out, json as
 from hardware.utils.rule import HardwareYaml
 
 
+kernel_config_dict = {}
+
 OUTPUTS = {
     'c_header': c_header,
     'compat_strings': compat_strings,
@@ -49,6 +51,7 @@ def add_task_args(outputs: dict, parser: argparse.ArgumentParser):
 def main(args: argparse.Namespace):
     ''' Parse the DT and hardware config YAML and run each
     selected output method. '''
+    global kernel_config_dict
     cfg = hardware.config.get_arch_config(args.sel4arch, args.addrspace_max)
     parsed_dt = FdtParser(args.dtb)
     rules = yaml.load(args.hardware_config, Loader=yaml.FullLoader)
@@ -87,7 +90,7 @@ if __name__ == '__main__':
 
     args = parser.parse_args()
 
-    kernel_config_dict = dict()
+    kernel_config_dict = {}
     if args.kernel_config_flags:
         for option in sum(args.kernel_config_flags, []):
             name, val = option.split('=')
