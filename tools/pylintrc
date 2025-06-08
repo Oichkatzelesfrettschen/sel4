@@ -5,4 +5,4 @@
 #
 
 [MASTER]
-extension-pkg-whitelist=lxml
+extension-pkg-whitelist=lxml,pyfdt

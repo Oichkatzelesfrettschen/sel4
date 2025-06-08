@@ -27,6 +27,8 @@ from ply import yacc
 
 import umm
 
+options = None  # parsed command-line options
+
 # Whether debugging is enabled (turn on with command line option --debug).
 DEBUG = False
 

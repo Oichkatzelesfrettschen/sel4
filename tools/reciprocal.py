@@ -18,6 +18,10 @@ import argparse
 import sys
 from past.builtins import xrange
 
+magic = 0
+shift_amt = 0
+add_ind = 0
+
 # now unsigned
 
 
